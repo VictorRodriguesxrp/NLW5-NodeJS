@@ -1,8 +1,7 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToMany, PrimaryColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
 import { v4 as uuidv4 } from "uuid";
 
 import { User } from "./User";
-
 
 @Entity("connections")
 class Connection {
@@ -13,8 +12,8 @@ class Connection {
   @Column()
   admin_id: string;
 
+  @ManyToOne(() => User)
   @JoinColumn({ name: "user_id"} )
-  @ManyToMany(() => User)
   user: User;
 
   @Column()
@@ -35,6 +34,5 @@ class Connection {
     }
   }
 }
-
 
 export { Connection };

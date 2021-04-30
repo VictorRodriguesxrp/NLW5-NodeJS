@@ -19,6 +19,11 @@ app.get("/pages/client", (request, response) => {
   return response.render("html/client.html"); 
 });
 
+app.get("/pages/admin", (request, response) => {
+  return response.render("html/admin.html"); 
+});
+
+
 const http = createServer(app); // criando protocolo http
 const io = new Server(http); // criando o protocolo web socket passando o http
 
